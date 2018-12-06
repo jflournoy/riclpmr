@@ -134,14 +134,13 @@ p', waveids[1], ' ~~ ', b$pq,'q', waveids[1])
 #'
 #' @param riclpmModel The lavaan syntax for the RI-CLPM model
 #' @param data The data
-#' @param ... Other parameters passed to lavaan
+#' @param ... Other parameters passed to \code{\link[lavaan]{lavaan}}
 #'
 #' @return a fitted model
 #' @export
 #'
 lavriclpm <- function(riclpmModel, data, ...){
   fit <- lavaan::lavaan(riclpmModel, data = data,
-                        missing = 'ML', #for the missing data!
                         int.ov.free = F,
                         int.lv.free = F,
                         auto.fix.first = F,

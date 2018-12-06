@@ -11,7 +11,7 @@ lavriclpm(riclpmModel, data, ...)
 
 \item{data}{The data}
 
-\item{...}{Other parameters passed to lavaan}
+\item{...}{Other parameters passed to \code{\link[lavaan]{lavaan}}}
 }
 \value{
 a fitted model
