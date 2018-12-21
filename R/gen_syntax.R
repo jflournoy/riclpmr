@@ -21,9 +21,11 @@
 #' @return A character string that is syntax for an RI-CLPM model as specified
 #' @export
 #'
-make_riclpm_lavaan <- function(xname = 'x', yname = 'y', waveints, constrain_all = F,
-                               alpha = '', delta = '', beta = '', gamma = '', uu = '', vv = '', uv = '',
-                               kk = '', oo = '' , ko = '', pp = '', qq = '', pq = ''){
+make_riclpm_lavaan <- function(xname = 'x', yname = 'y', waveints, slope = F, slope_center = 1, constrain_all = F,
+                               int.lv.free = F,
+                               alpha = '', delta = '', beta = '', gamma = '', uu = '', vv = '', uv = '', pp = '', qq = '', pq = '',
+                               kk = '', oo = '', ksks = '', osos = '', kks = '', oos = '', ko = '', kos = '', ksos = '', kso = ''){
+
   waveids <- waveints
   if(constrain_all){
     b <- list(alpha = 'alpha',
@@ -35,7 +37,14 @@ make_riclpm_lavaan <- function(xname = 'x', yname = 'y', waveints, constrain_all
               uv = 'uv',
               kk = 'kk',
               oo = 'oo',
+              ksks = 'ksks',
+              osos = 'osos',
+              kks = 'kks',
+              oos = 'oos',
               ko = 'ko',
+              kos = 'kos',
+              ksos = 'ksos',
+              kso = 'kso',
               pp = 'pp',
               qq = 'qq',
               pq = 'pq')
@@ -49,7 +58,14 @@ make_riclpm_lavaan <- function(xname = 'x', yname = 'y', waveints, constrain_all
              uv = uv,
              kk = kk,
              oo = oo,
+             ksks = ksks,
+             osos = osos,
+             kks = kks,
+             oos = oos,
              ko = ko,
+             kos = kos,
+             ksos = ksos,
+             kso = kso,
              pp = pp,
              qq = qq,
              pq = pq)
@@ -70,17 +86,60 @@ make_riclpm_lavaan <- function(xname = 'x', yname = 'y', waveints, constrain_all
                                       })),
                         collapse = '\n')
 
-  intercepts <- paste(unlist(lapply(list(c(xname,'mu'), c(yname, 'pi')),
-                                    function(pair){
-                                      lapply(waveids, function(wave){
-                                        paste0(pair[1], wave, ' ~ ', pair[2], wave, '*1')
-                                      })
-                                    })), collapse = '\n')
+  if(int.lv.free){
+    intercepts <- paste(unlist(lapply(list(c(xname,'0'), c(yname, '0')),
+                                      function(pair){
+                                        lapply(waveids, function(wave){
+                                          paste0(pair[1], wave, ' ~ ', pair[2], '*1')
+                                        })
+                                      })), collapse = '\n')
+    latent_intercepts <- 'kappa ~ k_m*1
+omega ~ o_m*1'
+    if(slope){
+      latent_intercepts <- paste(latent_intercepts,
+'kappa_s ~ ks_m*1
+omega_s ~ os_m*1', sep = '\n')
+    }
+    intercepts <- paste(intercepts, latent_intercepts, sep = '\n')
+  } else {
+    intercepts <- paste(unlist(lapply(list(c(xname,'mu'), c(yname, 'pi')),
+                                      function(pair){
+                                        lapply(waveids, function(wave){
+                                          paste0(pair[1], wave, ' ~ ', pair[2], wave, '*1')
+                                        })
+                                      })), collapse = '\n')
+    if(slope){
+      intercepts <- paste(intercepts,
+'kappa_s ~ ks_m*1
+omega_s ~ os_m*1', sep = '\n')
+    }
+  }
 
-  latent_covar <- paste0('
+  if(slope){
+    latent_slopes <- paste(paste0(c('kappa_s =~ ', 'omega_s =~ '),
+                                  lapply(lapply(c(xname, yname), paste0, waveids),
+                                         function(vars){
+                                           paste(paste0(waveids - slope_center, '*', vars), collapse = ' + ')
+                                         })),
+                           collapse = '\n')
+    latent_means <- paste(latent_means, latent_slopes, sep = '\n')
+    latent_covar <- paste0('
+                         kappa ~~ ',b$kk,'kappa #variance
+                         omega ~~ ',b$oo,'omega #variance
+                         kappa_s ~~ ',b$ksks,'kappa_s #variance
+                         omega_s ~~ ',b$osos,'omega_s #variance
+                         kappa ~~ ',b$kks,'kappa_s #covariance
+                         omega ~~ ',b$oos,'omega_s #covariance
+                         kappa ~~ ',b$ko,'omega #covariance
+                         kappa ~~ ',b$kos,'omega_s #covariance
+                         kappa_s ~~ ',b$kso,'omega #covariance
+                         kappa_s ~~ ',b$ksos,'omega_s #covariance')
+  } else {
+    latent_covar <- paste0('
                          kappa ~~ ',b$kk,'kappa #variance
                          omega ~~ ',b$oo,'omega #variance
                          kappa ~~ ',b$ko,'omega #covariance')
+  }
 
   latent_resids <- paste(unlist(lapply(list(c('p',xname), c('q', yname)),
                                        function(pair){
@@ -115,6 +174,14 @@ p', waveids[1], ' ~~ ', b$pq,'q', waveids[1])
                                   }),
                            collapse = '\n')
 
+  constraints <- '
+kk > 0.00001
+oo > 0.00001'
+  if(slope){
+    constraints <- paste(constraints,
+'ksks > 0
+osos > 0', sep = '\n')
+  }
 
   generatingModel <- paste(latent_means,
                            intercepts,
@@ -123,7 +190,8 @@ p', waveids[1], ' ~~ ', b$pq,'q', waveids[1])
                            regressions,
                            first_wave_varcovar,
                            residvar,
-                           contemporaneous, sep = '\n')
+                           contemporaneous,
+                           constraints, sep = '\n')
   return(generatingModel)
 }
 

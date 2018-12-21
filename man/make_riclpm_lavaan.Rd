@@ -4,10 +4,11 @@
 \alias{make_riclpm_lavaan}
 \title{make_riclpm_lavaan}
 \usage{
-make_riclpm_lavaan(xname = "x", yname = "y", waveints,
-  constrain_all = F, alpha = "", delta = "", beta = "",
-  gamma = "", uu = "", vv = "", uv = "", kk = "", oo = "",
-  ko = "", pp = "", qq = "", pq = "")
+make_riclpm_lavaan(xname = "x", yname = "y", waveints, slope = F,
+  slope_center = 1, constrain_all = F, alpha = "", delta = "",
+  beta = "", gamma = "", uu = "", vv = "", uv = "", pp = "",
+  qq = "", pq = "", kk = "", oo = "", ksks = "", osos = "",
+  kks = "", oos = "", ko = "", kos = "", ksos = "", kso = "")
 }
 \arguments{
 \item{xname}{name of x variable}
@@ -32,17 +33,17 @@ make_riclpm_lavaan(xname = "x", yname = "y", waveints,
 
 \item{uv}{set label or value for uv constraint}
 
-\item{kk}{set label or value for kk constraint}
-
-\item{oo}{set label or value for oo constraint}
-
-\item{ko}{set label or value for ko constraint}
-
 \item{pp}{set label or value for pp constraint}
 
 \item{qq}{set label or value for qq constraint}
 
 \item{pq}{set label or value for pq constraint}
+
+\item{kk}{set label or value for kk constraint}
+
+\item{oo}{set label or value for oo constraint}
+
+\item{ko}{set label or value for ko constraint}
 }
 \value{
 A character string that is syntax for an RI-CLPM model as specified
