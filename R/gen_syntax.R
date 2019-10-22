@@ -247,6 +247,17 @@ contemp_covars <- function(lat_resid_vars, constrain = TRUE){
   return(paste(unlist(covars), collapse = '\n'))
 }
 
+#' riclpm_text
+#'
+#' Given a list of sets of variables sampled repeatedly over equal time intervals, create a Random Intercept Cross Lagged Panel Model (RI-CLPM) specification for lavaan.
+#'
+#' @param var_groups A list of vectors of variable names.
+#' @param constrain_over_waves Constrain regression coefficients, covariances, and residuals to be the same from wave to wave? Will not constrain variances and covariances of wave-1 latent residuals.
+#' @param constrain_ints Constrain intercepts of manifest variables? Default is to free them. At the moment, passing other values is nonsense.
+#'
+#' @return Model text to be passed to a lavaan function.
+#' @export
+#'
 riclpm_text <- function(var_groups, constrain_over_waves = TRUE, constrain_ints = 'free'){
   ri_terms <- random_intercepts(var_groups = var_groups)
   ri_text <- paste(ri_terms['model_text',], collapse = '\n')
