@@ -259,15 +259,15 @@ contemp_covars <- function(lat_resid_vars, constrain = TRUE){
 #' @export
 #'
 riclpm_text <- function(var_groups, constrain_over_waves = TRUE, constrain_ints = 'free'){
-  ri_terms <- random_intercepts(var_groups = var_groups)
+  ri_terms <- riclpmr::random_intercepts(var_groups = var_groups)
   ri_text <- paste(ri_terms['model_text',], collapse = '\n')
-  ri_varcov_text <- varcovars(ri_terms['varname',])
-  man_ints_text <- manifest_ints(unlist(var_groups), constrain = constrain_ints)
-  lat_resid_terms <- latent_resids(var_groups = var_groups)
+  ri_varcov_text <- riclpmr::varcovars(ri_terms['varname',])
+  man_ints_text <- riclpmr::manifest_ints(unlist(var_groups), constrain = constrain_ints)
+  lat_resid_terms <- riclpmr::latent_resids(var_groups = var_groups)
   lat_resid_text <- paste0(unlist(lat_resid_terms['model_text',]), collapse = '\n')
   lat_resid_vars <- lat_resid_terms['varname',]
-  clpm_text <- clpm(lat_resid_vars, constrain = constrain_over_waves)
-  resid_vars_text <- residual_variances(lat_resid_vars, constrain = constrain_over_waves)
+  clpm_text <- riclpmr::clpm(lat_resid_vars, constrain = constrain_over_waves)
+  resid_vars_text <- riclpmr::residual_variances(lat_resid_vars, constrain = constrain_over_waves)
 
   lavmod <- paste(c(ri_text,
                     ri_varcov_text,
@@ -289,8 +289,8 @@ riclpm_text <- function(var_groups, constrain_over_waves = TRUE, constrain_ints 
 #' @param ... Other parameters passed to \code{\link[lavaan]{lavaan}}
 #'
 #' @return a fitted model
+#' @import lavaan
 #' @export
-#'
 lavriclpm <- function(riclpmModel, data, ...){
   fit <- lavaan::lavaan(riclpmModel, data = data,
                         int.ov.free = F,
