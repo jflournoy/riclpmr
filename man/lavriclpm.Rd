@@ -17,5 +17,6 @@ lavriclpm(riclpmModel, data, ...)
 a fitted model
 }
 \description{
-This passes through a model and data to the lavaan::lavaan
+This passes through a model and data to the lavaan::lavaan function with
+proper constraints.
 }
