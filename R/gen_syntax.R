@@ -308,8 +308,13 @@ riclpm_text <- function(var_groups, constrain_over_waves = TRUE, constrain_ints 
 #' \dontrun{
 #' summary(lavriclpm(model_text, data = adf))
 #' }
-lavriclpm <- function(riclpmModel, data, ...){
-  fit <- lavaan::lavaan(riclpmModel, data = data,
+lavriclpm <- function(riclpmModel, data, blavaan = FALSE, ...){
+  fitfunc <- lavaan::lavaan
+  if(blavaan){
+    requireNamespace(blavaan, quietly = TRUE)
+    fitfunc <- blavaan::blavaan
+  }
+  fit <- fitfunc(riclpmModel, data = data,
                         int.ov.free = F,
                         int.lv.free = F,
                         auto.fix.first = F,
