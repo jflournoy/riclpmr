@@ -1,6 +1,6 @@
 Package: riclpmr
 Title: Generate lavaan syntax for RI-CLPM
-Version: 0.0.0.9004
+Version: 0.1.0
 Authors@R: person("John", "Flournoy", email = "john_flournoy@fas.harvard.edu", role = c("aut", "cre"))
 Description: Generate lavaan syntax for a RI-CLPM
 Depends: R (>= 3.4.4)
