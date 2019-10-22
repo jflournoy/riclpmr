@@ -289,7 +289,6 @@ riclpm_text <- function(var_groups, constrain_over_waves = TRUE, constrain_ints 
 #' @param ... Other parameters passed to \code{\link[lavaan]{lavaan}}
 #'
 #' @return a fitted model
-#' @import lavaan
 #' @export
 #' @examples
 #' adf <- as.data.frame(MASS::mvrnorm(n=100, mu = rep(0, 30), Sigma = diag(30)))
