@@ -4,7 +4,7 @@
 \alias{lavriclpm}
 \title{lavriclpm}
 \usage{
-lavriclpm(riclpmModel, data, ...)
+lavriclpm(riclpmModel, data, blavaan = FALSE, ...)
 }
 \arguments{
 \item{riclpmModel}{The lavaan syntax for the RI-CLPM model}
