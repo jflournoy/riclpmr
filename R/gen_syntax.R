@@ -30,7 +30,7 @@ a_random_intercept <- function(vars, varname){
 #'   and rows for each element of the list returned by
 #'   \code{\link{a_random_intercept}}.
 #'
-#' @examples
+#' @export
 random_intercepts <- function(var_groups){
   return(mapply(a_random_intercept,
                 vars = var_groups,
@@ -291,6 +291,23 @@ riclpm_text <- function(var_groups, constrain_over_waves = TRUE, constrain_ints 
 #' @return a fitted model
 #' @import lavaan
 #' @export
+#' @examples
+#' adf <- as.data.frame(MASS::mvrnorm(n=100, mu = rep(0, 30), Sigma = diag(30)))
+#'
+#' xvars <- paste0('x', 1:10)
+#' yvars <- paste0('y', 1:10)
+#' mvars <- paste0('m', 1:10)
+#'
+#' names(adf) <- c(xvars,yvars,mvars)
+#'
+#' var_groups <- list(x = xvars, y = yvars, m = mvars)
+#'
+#'
+#' model_text <- riclpm_text(var_groups = var_groups, constrain_over_waves = TRUE, constrain_ints = 'free')
+#'
+#' \dontrun{
+#' summary(lavriclpm(model_text, data = adf))
+#' }
 lavriclpm <- function(riclpmModel, data, ...){
   fit <- lavaan::lavaan(riclpmModel, data = data,
                         int.ov.free = F,

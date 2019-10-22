@@ -20,3 +20,21 @@ a fitted model
 This passes through a model and data to the lavaan::lavaan function with
 proper constraints.
 }
+\examples{
+adf <- as.data.frame(MASS::mvrnorm(n=100, mu = rep(0, 30), Sigma = diag(30)))
+
+xvars <- paste0('x', 1:10)
+yvars <- paste0('y', 1:10)
+mvars <- paste0('m', 1:10)
+
+names(adf) <- c(xvars,yvars,mvars)
+
+var_groups <- list(x = xvars, y = yvars, m = mvars)
+
+
+model_text <- riclpm_text(var_groups = var_groups, constrain_over_waves = TRUE, constrain_ints = 'free')
+
+\dontrun{
+summary(lavriclpm(model_text, data = adf))
+}
+}
