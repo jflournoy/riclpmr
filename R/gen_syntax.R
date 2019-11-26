@@ -249,13 +249,30 @@ contemp_covars <- function(lat_resid_vars, constrain = TRUE){
 
 #' riclpm_text
 #'
-#' Given a list of sets of variables sampled repeatedly over equal time intervals, create a Random Intercept Cross Lagged Panel Model (RI-CLPM) specification for lavaan.
+#' Given a list of sets of variables sampled repeatedly over equal time
+#' intervals, create a Random Intercept Cross Lagged Panel Model (RI-CLPM)
+#' specification for lavaan.
 #'
-#' @param var_groups A list of vectors of variable names.
-#' @param constrain_over_waves Constrain regression coefficients, covariances, and residuals to be the same from wave to wave? Will not constrain variances and covariances of wave-1 latent residuals.
-#' @param constrain_ints Constrain intercepts of manifest variables? Default is to free them. At the moment, passing other values is nonsense.
+#' @param var_groups A named list of vectors of variable names. See Details.
+#' @param constrain_over_waves Constrain regression coefficients, covariances,
+#'   and residuals to be the same from wave to wave? Will not constrain
+#'   variances and covariances of wave-1 latent residuals.
+#' @param constrain_ints Constrain intercepts of manifest variables? Default is
+#'   to free them. At the moment, passing other values is nonsense.
+#'
+#' @details The input is a named list of character vectors. The character
+#'   vectors should include the variable names as they appear in the data set.
+#'   The lists names will be used to create the variable name of the latent
+#'   random intercept term. For example, if the data has observed variables x
+#'   and y at waves 1-3, the \code{var_groups} argument should be something like
+#'   \code{list(x=c("x_t1",  "x_t2",  "x_t3"), y=c("y_t1",  "y_t2",  "y_t3"))}.
 #'
 #' @return Model text to be passed to a lavaan function.
+#' @examples var_groups <- list(
+#'     x=c("x_t1",  "x_t2",  "x_t3"),
+#'     y=c("y_t1",  "y_t2",  "y_t3"),
+#'     z=c("z_t1",  "z_t2",  "z_t3"))
+#' model_text <- riclpmr::riclpm_text(var_groups)
 #' @export
 #'
 riclpm_text <- function(var_groups, constrain_over_waves = TRUE, constrain_ints = 'free'){
@@ -322,4 +339,26 @@ lavriclpm <- function(riclpmModel, data, blavaan = FALSE, ...){
                         auto.cov.y = F,
                         auto.var = F, ...)
   return(fit)
+}
+
+#' simriclpm
+#'
+#' @param riclpmModel Model text from \code{\link{riclpm_text}}.
+#' @param ... Additional parameters to \code{\link[lavaan]{simulateData}}.
+#'
+#' @return
+#' @export
+#'
+#' @examples
+simriclpm <- function(riclpmModel, ...){
+  simfunc <- lavaan::simulateData
+  D <- simfunc(riclpmModel,
+               int.ov.free = F,
+               int.lv.free = F,
+               auto.fix.first = F,
+               auto.fix.single = F,
+               auto.cov.lv.x = F,
+               auto.cov.y = F,
+               auto.var = F, ...)
+  return(D)
 }

@@ -8,15 +8,35 @@ riclpm_text(var_groups, constrain_over_waves = TRUE,
   constrain_ints = "free")
 }
 \arguments{
-\item{var_groups}{A list of vectors of variable names.}
+\item{var_groups}{A named list of vectors of variable names. See Details.}
 
-\item{constrain_over_waves}{Constrain regression coefficients, covariances, and residuals to be the same from wave to wave? Will not constrain variances and covariances of wave-1 latent residuals.}
+\item{constrain_over_waves}{Constrain regression coefficients, covariances,
+and residuals to be the same from wave to wave? Will not constrain
+variances and covariances of wave-1 latent residuals.}
 
-\item{constrain_ints}{Constrain intercepts of manifest variables? Default is to free them. At the moment, passing other values is nonsense.}
+\item{constrain_ints}{Constrain intercepts of manifest variables? Default is
+to free them. At the moment, passing other values is nonsense.}
 }
 \value{
 Model text to be passed to a lavaan function.
 }
 \description{
-Given a list of sets of variables sampled repeatedly over equal time intervals, create a Random Intercept Cross Lagged Panel Model (RI-CLPM) specification for lavaan.
+Given a list of sets of variables sampled repeatedly over equal time
+intervals, create a Random Intercept Cross Lagged Panel Model (RI-CLPM)
+specification for lavaan.
+}
+\details{
+The input is a named list of character vectors. The character
+  vectors should include the variable names as they appear in the data set.
+  The lists names will be used to create the variable name of the latent
+  random intercept term. For example, if the data has observed variables x
+  and y at waves 1-3, the \code{var_groups} argument should be something like
+  \code{list(x=c("x_t1",  "x_t2",  "x_t3"), y=c("y_t1",  "y_t2",  "y_t3"))}.
+}
+\examples{
+var_groups <- list(
+    x=c("x_t1",  "x_t2",  "x_t3"),
+    y=c("y_t1",  "y_t2",  "y_t3"),
+    z=c("z_t1",  "z_t2",  "z_t3"))
+model_text <- riclpmr::riclpm_text(var_groups)
 }

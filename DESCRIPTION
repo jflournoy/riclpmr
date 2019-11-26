@@ -10,3 +10,7 @@ License: MIT + file LICENSE
 Imports:
   lavaan
 RoxygenNote: 6.1.1
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

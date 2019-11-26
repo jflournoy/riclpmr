@@ -1,0 +1,46 @@
+---
+title: "A very brief introduction to the `riclpmr` package"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Here is a brief example to help you get started. 
+
+To install the package:
+
+```{r eval=F}
+#install.packages(devtools)
+devtools::install_github('jflournoy/riclpmr')
+```
+
+Generate a new model:
+
+```{r}
+library(riclpmr)
+var_groups <- list(
+  x=c("x_t1",  "x_t2",  "x_t3"),
+  y=c("y_t1",  "y_t2",  "y_t3"),
+  z=c("z_t1",  "z_t2",  "z_t3"))
+model_text <- riclpmr::riclpm_text(var_groups)
+cat(model_text)
+```
+
+```{r}
+#We could edit the model code to set specific regresion coefficients. lavaan
+#will automatically set them to 0.
+fake_data <- riclpmr::simriclpm(riclpmModel = model_text, sample.nobs = 500)
+fit <- riclpmr::lavriclpm(riclpmModel = model_text, data = fake_data)
+lavaan::summary(fit)
+```
+
