@@ -30,7 +30,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">riclpmr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
       </span>
     </div>
 
@@ -139,7 +139,7 @@
 <a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; unspecified and will be set to zero</span></a>
 <a class="sourceLine" id="cb3-7" data-line-number="7">fit &lt;-<span class="st"> </span>riclpmr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/riclpmr/topics/lavriclpm">lavriclpm</a></span>(<span class="dt">riclpmModel =</span> model_text, <span class="dt">data =</span> fake_data)</a>
 <a class="sourceLine" id="cb3-8" data-line-number="8">lavaan<span class="op">::</span><span class="kw">summary</span>(fit)</a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; lavaan 0.6-5 ended normally after 41 iterations</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; lavaan 0.6-5 ended normally after 53 iterations</span></a>
 <a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt;   Estimator                                         ML</span></a>
 <a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt;   Optimization method                           NLMINB</span></a>
@@ -151,9 +151,9 @@
 <a class="sourceLine" id="cb3-18" data-line-number="18"><span class="co">#&gt;                                                       </span></a>
 <a class="sourceLine" id="cb3-19" data-line-number="19"><span class="co">#&gt; Model Test User Model:</span></a>
 <a class="sourceLine" id="cb3-20" data-line-number="20"><span class="co">#&gt;                                                       </span></a>
-<a class="sourceLine" id="cb3-21" data-line-number="21"><span class="co">#&gt;   Test statistic                                38.019</span></a>
+<a class="sourceLine" id="cb3-21" data-line-number="21"><span class="co">#&gt;   Test statistic                                16.840</span></a>
 <a class="sourceLine" id="cb3-22" data-line-number="22"><span class="co">#&gt;   Degrees of freedom                                18</span></a>
-<a class="sourceLine" id="cb3-23" data-line-number="23"><span class="co">#&gt;   P-value (Chi-square)                           0.004</span></a>
+<a class="sourceLine" id="cb3-23" data-line-number="23"><span class="co">#&gt;   P-value (Chi-square)                           0.534</span></a>
 <a class="sourceLine" id="cb3-24" data-line-number="24"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb3-25" data-line-number="25"><span class="co">#&gt; Parameter Estimates:</span></a>
 <a class="sourceLine" id="cb3-26" data-line-number="26"><span class="co">#&gt; </span></a>
@@ -197,64 +197,64 @@
 <a class="sourceLine" id="cb3-64" data-line-number="64"><span class="co">#&gt; Regressions:</span></a>
 <a class="sourceLine" id="cb3-65" data-line-number="65"><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></a>
 <a class="sourceLine" id="cb3-66" data-line-number="66"><span class="co">#&gt;   lat_x2 ~                                            </span></a>
-<a class="sourceLine" id="cb3-67" data-line-number="67"><span class="co">#&gt;     lat_x1   (x_x)    0.087    0.069    1.268    0.205</span></a>
-<a class="sourceLine" id="cb3-68" data-line-number="68"><span class="co">#&gt;     lat_y1   (x_y)   -0.004    0.054   -0.083    0.934</span></a>
-<a class="sourceLine" id="cb3-69" data-line-number="69"><span class="co">#&gt;     lat_z1   (x_z)    0.070    0.055    1.274    0.203</span></a>
+<a class="sourceLine" id="cb3-67" data-line-number="67"><span class="co">#&gt;     lat_x1   (x_x)    0.008    0.066    0.123    0.902</span></a>
+<a class="sourceLine" id="cb3-68" data-line-number="68"><span class="co">#&gt;     lat_y1   (x_y)    0.038    0.053    0.721    0.471</span></a>
+<a class="sourceLine" id="cb3-69" data-line-number="69"><span class="co">#&gt;     lat_z1   (x_z)    0.049    0.053    0.914    0.361</span></a>
 <a class="sourceLine" id="cb3-70" data-line-number="70"><span class="co">#&gt;   lat_x3 ~                                            </span></a>
-<a class="sourceLine" id="cb3-71" data-line-number="71"><span class="co">#&gt;     lat_x2   (x_x)    0.087    0.069    1.268    0.205</span></a>
-<a class="sourceLine" id="cb3-72" data-line-number="72"><span class="co">#&gt;     lat_y2   (x_y)   -0.004    0.054   -0.083    0.934</span></a>
-<a class="sourceLine" id="cb3-73" data-line-number="73"><span class="co">#&gt;     lat_z2   (x_z)    0.070    0.055    1.274    0.203</span></a>
+<a class="sourceLine" id="cb3-71" data-line-number="71"><span class="co">#&gt;     lat_x2   (x_x)    0.008    0.066    0.123    0.902</span></a>
+<a class="sourceLine" id="cb3-72" data-line-number="72"><span class="co">#&gt;     lat_y2   (x_y)    0.038    0.053    0.721    0.471</span></a>
+<a class="sourceLine" id="cb3-73" data-line-number="73"><span class="co">#&gt;     lat_z2   (x_z)    0.049    0.053    0.914    0.361</span></a>
 <a class="sourceLine" id="cb3-74" data-line-number="74"><span class="co">#&gt;   lat_y2 ~                                            </span></a>
-<a class="sourceLine" id="cb3-75" data-line-number="75"><span class="co">#&gt;     lat_x1   (y_x)   -0.016    0.051   -0.319    0.750</span></a>
-<a class="sourceLine" id="cb3-76" data-line-number="76"><span class="co">#&gt;     lat_y1   (y_y)   -0.026    0.060   -0.432    0.666</span></a>
-<a class="sourceLine" id="cb3-77" data-line-number="77"><span class="co">#&gt;     lat_z1   (y_z)   -0.030    0.050   -0.602    0.547</span></a>
+<a class="sourceLine" id="cb3-75" data-line-number="75"><span class="co">#&gt;     lat_x1   (y_x)   -0.043    0.054   -0.804    0.422</span></a>
+<a class="sourceLine" id="cb3-76" data-line-number="76"><span class="co">#&gt;     lat_y1   (y_y)    0.036    0.067    0.545    0.586</span></a>
+<a class="sourceLine" id="cb3-77" data-line-number="77"><span class="co">#&gt;     lat_z1   (y_z)   -0.017    0.054   -0.306    0.760</span></a>
 <a class="sourceLine" id="cb3-78" data-line-number="78"><span class="co">#&gt;   lat_y3 ~                                            </span></a>
-<a class="sourceLine" id="cb3-79" data-line-number="79"><span class="co">#&gt;     lat_x2   (y_x)   -0.016    0.051   -0.319    0.750</span></a>
-<a class="sourceLine" id="cb3-80" data-line-number="80"><span class="co">#&gt;     lat_y2   (y_y)   -0.026    0.060   -0.432    0.666</span></a>
-<a class="sourceLine" id="cb3-81" data-line-number="81"><span class="co">#&gt;     lat_z2   (y_z)   -0.030    0.050   -0.602    0.547</span></a>
+<a class="sourceLine" id="cb3-79" data-line-number="79"><span class="co">#&gt;     lat_x2   (y_x)   -0.043    0.054   -0.804    0.422</span></a>
+<a class="sourceLine" id="cb3-80" data-line-number="80"><span class="co">#&gt;     lat_y2   (y_y)    0.036    0.067    0.545    0.586</span></a>
+<a class="sourceLine" id="cb3-81" data-line-number="81"><span class="co">#&gt;     lat_z2   (y_z)   -0.017    0.054   -0.306    0.760</span></a>
 <a class="sourceLine" id="cb3-82" data-line-number="82"><span class="co">#&gt;   lat_z2 ~                                            </span></a>
-<a class="sourceLine" id="cb3-83" data-line-number="83"><span class="co">#&gt;     lat_x1   (z_x)   -0.001    0.052   -0.012    0.991</span></a>
-<a class="sourceLine" id="cb3-84" data-line-number="84"><span class="co">#&gt;     lat_y1   (z_y)   -0.018    0.050   -0.357    0.721</span></a>
-<a class="sourceLine" id="cb3-85" data-line-number="85"><span class="co">#&gt;     lat_z1   (z_z)   -0.023    0.062   -0.377    0.706</span></a>
+<a class="sourceLine" id="cb3-83" data-line-number="83"><span class="co">#&gt;     lat_x1   (z_x)    0.033    0.048    0.679    0.497</span></a>
+<a class="sourceLine" id="cb3-84" data-line-number="84"><span class="co">#&gt;     lat_y1   (z_y)    0.003    0.048    0.063    0.950</span></a>
+<a class="sourceLine" id="cb3-85" data-line-number="85"><span class="co">#&gt;     lat_z1   (z_z)   -0.111    0.057   -1.931    0.053</span></a>
 <a class="sourceLine" id="cb3-86" data-line-number="86"><span class="co">#&gt;   lat_z3 ~                                            </span></a>
-<a class="sourceLine" id="cb3-87" data-line-number="87"><span class="co">#&gt;     lat_x2   (z_x)   -0.001    0.052   -0.012    0.991</span></a>
-<a class="sourceLine" id="cb3-88" data-line-number="88"><span class="co">#&gt;     lat_y2   (z_y)   -0.018    0.050   -0.357    0.721</span></a>
-<a class="sourceLine" id="cb3-89" data-line-number="89"><span class="co">#&gt;     lat_z2   (z_z)   -0.023    0.062   -0.377    0.706</span></a>
+<a class="sourceLine" id="cb3-87" data-line-number="87"><span class="co">#&gt;     lat_x2   (z_x)    0.033    0.048    0.679    0.497</span></a>
+<a class="sourceLine" id="cb3-88" data-line-number="88"><span class="co">#&gt;     lat_y2   (z_y)    0.003    0.048    0.063    0.950</span></a>
+<a class="sourceLine" id="cb3-89" data-line-number="89"><span class="co">#&gt;     lat_z2   (z_z)   -0.111    0.057   -1.931    0.053</span></a>
 <a class="sourceLine" id="cb3-90" data-line-number="90"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb3-91" data-line-number="91"><span class="co">#&gt; Covariances:</span></a>
 <a class="sourceLine" id="cb3-92" data-line-number="92"><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></a>
 <a class="sourceLine" id="cb3-93" data-line-number="93"><span class="co">#&gt;   ri_x ~~                                             </span></a>
-<a class="sourceLine" id="cb3-94" data-line-number="94"><span class="co">#&gt;     ri_y              0.032    0.068    0.468    0.640</span></a>
-<a class="sourceLine" id="cb3-95" data-line-number="95"><span class="co">#&gt;     ri_z              0.008    0.068    0.113    0.910</span></a>
+<a class="sourceLine" id="cb3-94" data-line-number="94"><span class="co">#&gt;     ri_y             -0.037    0.072   -0.510    0.610</span></a>
+<a class="sourceLine" id="cb3-95" data-line-number="95"><span class="co">#&gt;     ri_z              0.009    0.067    0.136    0.892</span></a>
 <a class="sourceLine" id="cb3-96" data-line-number="96"><span class="co">#&gt;   ri_y ~~                                             </span></a>
-<a class="sourceLine" id="cb3-97" data-line-number="97"><span class="co">#&gt;     ri_z              0.045    0.065    0.683    0.495</span></a>
+<a class="sourceLine" id="cb3-97" data-line-number="97"><span class="co">#&gt;     ri_z              0.090    0.070    1.299    0.194</span></a>
 <a class="sourceLine" id="cb3-98" data-line-number="98"><span class="co">#&gt;   lat_x1 ~~                                           </span></a>
-<a class="sourceLine" id="cb3-99" data-line-number="99"><span class="co">#&gt;     lat_y1            0.102    0.068    1.502    0.133</span></a>
-<a class="sourceLine" id="cb3-100" data-line-number="100"><span class="co">#&gt;     lat_z1            0.031    0.067    0.468    0.640</span></a>
+<a class="sourceLine" id="cb3-99" data-line-number="99"><span class="co">#&gt;     lat_y1            0.083    0.067    1.241    0.215</span></a>
+<a class="sourceLine" id="cb3-100" data-line-number="100"><span class="co">#&gt;     lat_z1           -0.075    0.059   -1.265    0.206</span></a>
 <a class="sourceLine" id="cb3-101" data-line-number="101"><span class="co">#&gt;  .lat_x2 ~~                                           </span></a>
-<a class="sourceLine" id="cb3-102" data-line-number="102"><span class="co">#&gt;    .lat_y2  (r_xy)   -0.125    0.058   -2.158    0.031</span></a>
-<a class="sourceLine" id="cb3-103" data-line-number="103"><span class="co">#&gt;    .lat_z2  (r_xz)    0.021    0.059    0.353    0.724</span></a>
+<a class="sourceLine" id="cb3-102" data-line-number="102"><span class="co">#&gt;    .lat_y2  (r_xy)   -0.011    0.057   -0.197    0.843</span></a>
+<a class="sourceLine" id="cb3-103" data-line-number="103"><span class="co">#&gt;    .lat_z2  (r_xz)    0.000    0.051    0.004    0.997</span></a>
 <a class="sourceLine" id="cb3-104" data-line-number="104"><span class="co">#&gt;  .lat_x3 ~~                                           </span></a>
-<a class="sourceLine" id="cb3-105" data-line-number="105"><span class="co">#&gt;    .lat_y3  (r_xy)   -0.125    0.058   -2.158    0.031</span></a>
-<a class="sourceLine" id="cb3-106" data-line-number="106"><span class="co">#&gt;    .lat_z3  (r_xz)    0.021    0.059    0.353    0.724</span></a>
+<a class="sourceLine" id="cb3-105" data-line-number="105"><span class="co">#&gt;    .lat_y3  (r_xy)   -0.011    0.057   -0.197    0.843</span></a>
+<a class="sourceLine" id="cb3-106" data-line-number="106"><span class="co">#&gt;    .lat_z3  (r_xz)    0.000    0.051    0.004    0.997</span></a>
 <a class="sourceLine" id="cb3-107" data-line-number="107"><span class="co">#&gt;   lat_y1 ~~                                           </span></a>
-<a class="sourceLine" id="cb3-108" data-line-number="108"><span class="co">#&gt;     lat_z1           -0.009    0.067   -0.130    0.896</span></a>
+<a class="sourceLine" id="cb3-108" data-line-number="108"><span class="co">#&gt;     lat_z1           -0.049    0.061   -0.802    0.423</span></a>
 <a class="sourceLine" id="cb3-109" data-line-number="109"><span class="co">#&gt;  .lat_y2 ~~                                           </span></a>
-<a class="sourceLine" id="cb3-110" data-line-number="110"><span class="co">#&gt;    .lat_z2  (r_yz)    0.024    0.053    0.442    0.659</span></a>
+<a class="sourceLine" id="cb3-110" data-line-number="110"><span class="co">#&gt;    .lat_z2  (r_yz)   -0.016    0.052   -0.311    0.756</span></a>
 <a class="sourceLine" id="cb3-111" data-line-number="111"><span class="co">#&gt;  .lat_y3 ~~                                           </span></a>
-<a class="sourceLine" id="cb3-112" data-line-number="112"><span class="co">#&gt;    .lat_z3  (r_yz)    0.024    0.053    0.442    0.659</span></a>
+<a class="sourceLine" id="cb3-112" data-line-number="112"><span class="co">#&gt;    .lat_z3  (r_yz)   -0.016    0.052   -0.311    0.756</span></a>
 <a class="sourceLine" id="cb3-113" data-line-number="113"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb3-114" data-line-number="114"><span class="co">#&gt; Intercepts:</span></a>
 <a class="sourceLine" id="cb3-115" data-line-number="115"><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></a>
-<a class="sourceLine" id="cb3-116" data-line-number="116"><span class="co">#&gt;    .x_t1    (x_1_)   -0.063    0.062   -1.019    0.308</span></a>
-<a class="sourceLine" id="cb3-117" data-line-number="117"><span class="co">#&gt;    .x_t2    (x_2_)   -0.042    0.065   -0.645    0.519</span></a>
-<a class="sourceLine" id="cb3-118" data-line-number="118"><span class="co">#&gt;    .x_t3    (x_3_)   -0.110    0.065   -1.704    0.088</span></a>
-<a class="sourceLine" id="cb3-119" data-line-number="119"><span class="co">#&gt;    .y_t1    (y_1_)    0.001    0.065    0.018    0.985</span></a>
-<a class="sourceLine" id="cb3-120" data-line-number="120"><span class="co">#&gt;    .y_t2    (y_2_)    0.115    0.062    1.859    0.063</span></a>
-<a class="sourceLine" id="cb3-121" data-line-number="121"><span class="co">#&gt;    .y_t3    (y_3_)   -0.017    0.062   -0.269    0.788</span></a>
-<a class="sourceLine" id="cb3-122" data-line-number="122"><span class="co">#&gt;    .z_t1    (z_1_)   -0.069    0.064   -1.075    0.282</span></a>
-<a class="sourceLine" id="cb3-123" data-line-number="123"><span class="co">#&gt;    .z_t2    (z_2_)   -0.093    0.062   -1.492    0.136</span></a>
-<a class="sourceLine" id="cb3-124" data-line-number="124"><span class="co">#&gt;    .z_t3    (z_3_)   -0.004    0.062   -0.063    0.950</span></a>
+<a class="sourceLine" id="cb3-116" data-line-number="116"><span class="co">#&gt;    .x_t1    (x_1_)    0.068    0.064    1.070    0.285</span></a>
+<a class="sourceLine" id="cb3-117" data-line-number="117"><span class="co">#&gt;    .x_t2    (x_2_)    0.067    0.063    1.055    0.292</span></a>
+<a class="sourceLine" id="cb3-118" data-line-number="118"><span class="co">#&gt;    .x_t3    (x_3_)    0.057    0.063    0.900    0.368</span></a>
+<a class="sourceLine" id="cb3-119" data-line-number="119"><span class="co">#&gt;    .y_t1    (y_1_)    0.064    0.066    0.971    0.332</span></a>
+<a class="sourceLine" id="cb3-120" data-line-number="120"><span class="co">#&gt;    .y_t2    (y_2_)    0.048    0.065    0.737    0.461</span></a>
+<a class="sourceLine" id="cb3-121" data-line-number="121"><span class="co">#&gt;    .y_t3    (y_3_)    0.032    0.065    0.484    0.628</span></a>
+<a class="sourceLine" id="cb3-122" data-line-number="122"><span class="co">#&gt;    .z_t1    (z_1_)   -0.028    0.065   -0.427    0.670</span></a>
+<a class="sourceLine" id="cb3-123" data-line-number="123"><span class="co">#&gt;    .z_t2    (z_2_)   -0.083    0.062   -1.327    0.185</span></a>
+<a class="sourceLine" id="cb3-124" data-line-number="124"><span class="co">#&gt;    .z_t3    (z_3_)   -0.003    0.062   -0.045    0.964</span></a>
 <a class="sourceLine" id="cb3-125" data-line-number="125"><span class="co">#&gt;     ri_x              0.000                           </span></a>
 <a class="sourceLine" id="cb3-126" data-line-number="126"><span class="co">#&gt;     ri_y              0.000                           </span></a>
 <a class="sourceLine" id="cb3-127" data-line-number="127"><span class="co">#&gt;     ri_z              0.000                           </span></a>
@@ -270,18 +270,18 @@
 <a class="sourceLine" id="cb3-137" data-line-number="137"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb3-138" data-line-number="138"><span class="co">#&gt; Variances:</span></a>
 <a class="sourceLine" id="cb3-139" data-line-number="139"><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></a>
-<a class="sourceLine" id="cb3-140" data-line-number="140"><span class="co">#&gt;     ri_x              0.903    0.101    8.971    0.000</span></a>
-<a class="sourceLine" id="cb3-141" data-line-number="141"><span class="co">#&gt;     ri_y              0.970    0.092   10.532    0.000</span></a>
-<a class="sourceLine" id="cb3-142" data-line-number="142"><span class="co">#&gt;     ri_z              0.961    0.093   10.363    0.000</span></a>
-<a class="sourceLine" id="cb3-143" data-line-number="143"><span class="co">#&gt;     lat_x1            1.008    0.096   10.529    0.000</span></a>
-<a class="sourceLine" id="cb3-144" data-line-number="144"><span class="co">#&gt;    .lat_x2   (e_x)    1.171    0.087   13.438    0.000</span></a>
-<a class="sourceLine" id="cb3-145" data-line-number="145"><span class="co">#&gt;    .lat_x3   (e_x)    1.171    0.087   13.438    0.000</span></a>
-<a class="sourceLine" id="cb3-146" data-line-number="146"><span class="co">#&gt;     lat_y1            1.146    0.096   11.928    0.000</span></a>
-<a class="sourceLine" id="cb3-147" data-line-number="147"><span class="co">#&gt;    .lat_y2   (e_y)    0.938    0.074   12.670    0.000</span></a>
-<a class="sourceLine" id="cb3-148" data-line-number="148"><span class="co">#&gt;    .lat_y3   (e_y)    0.938    0.074   12.670    0.000</span></a>
-<a class="sourceLine" id="cb3-149" data-line-number="149"><span class="co">#&gt;     lat_z1            1.098    0.093   11.747    0.000</span></a>
-<a class="sourceLine" id="cb3-150" data-line-number="150"><span class="co">#&gt;    .lat_z2   (e_z)    0.964    0.077   12.574    0.000</span></a>
-<a class="sourceLine" id="cb3-151" data-line-number="151"><span class="co">#&gt;    .lat_z3   (e_z)    0.964    0.077   12.574    0.000</span></a>
+<a class="sourceLine" id="cb3-140" data-line-number="140"><span class="co">#&gt;     ri_x              0.997    0.097   10.283    0.000</span></a>
+<a class="sourceLine" id="cb3-141" data-line-number="141"><span class="co">#&gt;     ri_y              1.092    0.106   10.278    0.000</span></a>
+<a class="sourceLine" id="cb3-142" data-line-number="142"><span class="co">#&gt;     ri_z              1.134    0.092   12.281    0.000</span></a>
+<a class="sourceLine" id="cb3-143" data-line-number="143"><span class="co">#&gt;     lat_x1            1.031    0.091   11.328    0.000</span></a>
+<a class="sourceLine" id="cb3-144" data-line-number="144"><span class="co">#&gt;    .lat_x2   (e_x)    1.004    0.080   12.574    0.000</span></a>
+<a class="sourceLine" id="cb3-145" data-line-number="145"><span class="co">#&gt;    .lat_x3   (e_x)    1.004    0.080   12.574    0.000</span></a>
+<a class="sourceLine" id="cb3-146" data-line-number="146"><span class="co">#&gt;     lat_y1            1.085    0.097   11.154    0.000</span></a>
+<a class="sourceLine" id="cb3-147" data-line-number="147"><span class="co">#&gt;    .lat_y2   (e_y)    1.026    0.083   12.425    0.000</span></a>
+<a class="sourceLine" id="cb3-148" data-line-number="148"><span class="co">#&gt;    .lat_y3   (e_y)    1.026    0.083   12.425    0.000</span></a>
+<a class="sourceLine" id="cb3-149" data-line-number="149"><span class="co">#&gt;     lat_z1            0.946    0.078   12.136    0.000</span></a>
+<a class="sourceLine" id="cb3-150" data-line-number="150"><span class="co">#&gt;    .lat_z2   (e_z)    0.802    0.064   12.526    0.000</span></a>
+<a class="sourceLine" id="cb3-151" data-line-number="151"><span class="co">#&gt;    .lat_z3   (e_z)    0.802    0.064   12.526    0.000</span></a>
 <a class="sourceLine" id="cb3-152" data-line-number="152"><span class="co">#&gt;    .x_t1              0.000                           </span></a>
 <a class="sourceLine" id="cb3-153" data-line-number="153"><span class="co">#&gt;    .x_t2              0.000                           </span></a>
 <a class="sourceLine" id="cb3-154" data-line-number="154"><span class="co">#&gt;    .x_t3              0.000                           </span></a>
