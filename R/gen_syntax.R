@@ -203,7 +203,7 @@ clpm <- function(lat_resid_vars, constrain = TRUE){
         paste0(constraint_name, '*', col)
       }, adf[-nvars,], set_names))
     } else {
-      right_side_adf <- adf
+      right_side_adf <- adf[-nvars, ]
     }
     right_side <- apply(right_side_adf, 1, paste, collapse = ' + ')
     paste0(left_side, ' ~ ', right_side)
