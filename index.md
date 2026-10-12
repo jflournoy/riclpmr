@@ -6,7 +6,7 @@ large numbers of constructs and measurement occations.
 
 It also contains a helpful function for passing this model specification to the appropriate `lavaan` or `blavaan` function.
 
-See [this blog post](https://jflournoy.github.io/2017/10/20/riclpm-lavaan-demo/) for more information about the model.
+See [this blog post](https://johnflournoy.science/riclpm-lavaan-demo.html) for more information about the model.
 
 To install:
 

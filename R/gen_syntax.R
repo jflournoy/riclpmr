@@ -327,7 +327,9 @@ riclpm_text <- function(var_groups, constrain_over_waves = TRUE, constrain_ints 
 lavriclpm <- function(riclpmModel, data, blavaan = FALSE, ...){
   fitfunc <- lavaan::lavaan
   if(blavaan){
-    requireNamespace(blavaan, quietly = TRUE)
+    if(!requireNamespace('blavaan', quietly = TRUE)){
+      stop("blavaan = TRUE requires the blavaan package: install.packages('blavaan')")
+    }
     fitfunc <- blavaan::blavaan
   }
   fit <- fitfunc(riclpmModel, data = data,
