@@ -301,7 +301,12 @@ riclpm_text <- function(var_groups, constrain_over_waves = TRUE, constrain_ints 
 #' This passes through a model and data to the lavaan::lavaan function with
 #' proper constraints.
 #'
-#' @param riclpmModel The lavaan syntax for the RI-CLPM model
+#' To fit the same model many times (simulations, bootstraps), parse the
+#' syntax once with \code{\link{riclpm_partable}} and pass the resulting
+#' parameter table as \code{riclpmModel}.
+#'
+#' @param riclpmModel The lavaan syntax for the RI-CLPM model, or a parameter
+#'   table from \code{\link{riclpm_partable}}
 #' @param data The data
 #' @param ... Other parameters passed to \code{\link[lavaan]{lavaan}}
 #'
@@ -332,15 +337,43 @@ lavriclpm <- function(riclpmModel, data, blavaan = FALSE, ...){
     }
     fitfunc <- blavaan::blavaan
   }
-  fit <- fitfunc(riclpmModel, data = data,
-                        int.ov.free = F,
-                        int.lv.free = F,
-                        auto.fix.first = F,
-                        auto.fix.single = F,
-                        auto.cov.lv.x = F,
-                        auto.cov.y = F,
-                        auto.var = F, ...)
+  # Model and data go in as symbols, evaluated here, so fit@call records
+  # `model = riclpmModel, data = data` rather than a copy of the data.
+  fit <- do.call(fitfunc, c(list(model = quote(riclpmModel), data = quote(data)),
+                            .riclpm_lavaan_opts,
+                            list(...)),
+                 envir = environment())
   return(fit)
+}
+
+#' riclpm_partable
+#'
+#' Parse RI-CLPM syntax once into a lavaan parameter table, using the same
+#' options \code{\link{lavriclpm}} uses to fit the model.
+#'
+#' \code{lavaan} accepts a parameter table in place of model syntax. When the
+#' same model is fit many times, as in a simulation or a bootstrap, parsing the
+#' syntax on every fit is wasted work. Parse it once with this function and pass
+#' the table to \code{\link{lavriclpm}} as \code{riclpmModel}. The fit is
+#' identical to fitting from the syntax, because both use the same internal set
+#' of lavaan options.
+#'
+#' @param riclpmModel Model syntax, e.g. from \code{\link{riclpm_text}}.
+#'
+#' @return A lavaan parameter table (a list with one element per column, as
+#'   returned by \code{\link[lavaan]{lavaanify}}).
+#' @export
+#' @examples
+#' var_groups <- list(x = paste0('x', 1:4), y = paste0('y', 1:4))
+#' model_text <- riclpm_text(var_groups, constrain_over_waves = TRUE)
+#' pt <- riclpm_partable(model_text)
+#'
+#' \dontrun{
+#' fits <- lapply(list_of_datasets, function(d) lavriclpm(riclpmModel = pt, data = d))
+#' }
+riclpm_partable <- function(riclpmModel){
+  return(do.call(lavaan::lavaanify,
+                 c(list(model = riclpmModel), .riclpm_lavaan_opts)))
 }
 
 #' simriclpm
@@ -354,13 +387,8 @@ lavriclpm <- function(riclpmModel, data, blavaan = FALSE, ...){
 #' @examples
 simriclpm <- function(riclpmModel, ...){
   simfunc <- lavaan::simulateData
-  D <- simfunc(riclpmModel,
-               int.ov.free = F,
-               int.lv.free = F,
-               auto.fix.first = F,
-               auto.fix.single = F,
-               auto.cov.lv.x = F,
-               auto.cov.y = F,
-               auto.var = F, ...)
+  D <- do.call(simfunc, c(list(model = riclpmModel),
+                          .riclpm_lavaan_opts,
+                          list(...)))
   return(D)
 }

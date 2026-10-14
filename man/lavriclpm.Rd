@@ -7,7 +7,8 @@
 lavriclpm(riclpmModel, data, blavaan = FALSE, ...)
 }
 \arguments{
-\item{riclpmModel}{The lavaan syntax for the RI-CLPM model}
+\item{riclpmModel}{The lavaan syntax for the RI-CLPM model, or a parameter
+table from \code{\link{riclpm_partable}}}
 
 \item{data}{The data}
 
@@ -19,6 +20,11 @@ a fitted model
 \description{
 This passes through a model and data to the lavaan::lavaan function with
 proper constraints.
+}
+\details{
+To fit the same model many times (simulations, bootstraps), parse the
+syntax once with \code{\link{riclpm_partable}} and pass the resulting
+parameter table as \code{riclpmModel}.
 }
 \examples{
 adf <- as.data.frame(MASS::mvrnorm(n=100, mu = rep(0, 30), Sigma = diag(30)))

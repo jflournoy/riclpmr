@@ -10,3 +10,15 @@
 #' @name riclpmr
 #' @import lavaan
 NULL
+
+# lavaan options used by every function that hands RI-CLPM syntax to lavaan
+# (lavriclpm, riclpm_partable, simriclpm). Kept in one place so a parameter
+# table from riclpm_partable() is always built the same way lavriclpm() would
+# build it from syntax.
+.riclpm_lavaan_opts <- list(int.ov.free = FALSE,
+                            int.lv.free = FALSE,
+                            auto.fix.first = FALSE,
+                            auto.fix.single = FALSE,
+                            auto.cov.lv.x = FALSE,
+                            auto.cov.y = FALSE,
+                            auto.var = FALSE)
