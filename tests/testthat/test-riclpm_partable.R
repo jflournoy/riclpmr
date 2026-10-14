@@ -76,3 +76,11 @@ test_that('lavriclpm() and riclpm_partable() share one option list', {
                           'auto.var')))
   expect_true(all(vapply(opts, isFALSE, logical(1))))
 })
+
+test_that("lavriclpm records the model and data by name, not by value, in fit@call", {
+  dat <- riclpm_test_data()
+  fit <- lavriclpm(riclpmModel = riclpm_text(riclpm_test_groups, constrain_over_waves = TRUE), data = dat)
+  cl <- fit@call
+  expect_identical(cl$model, quote(riclpmModel))
+  expect_identical(cl$data, quote(data))
+})

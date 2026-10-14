@@ -337,9 +337,12 @@ lavriclpm <- function(riclpmModel, data, blavaan = FALSE, ...){
     }
     fitfunc <- blavaan::blavaan
   }
-  fit <- do.call(fitfunc, c(list(model = riclpmModel, data = data),
+  # Model and data go in as symbols, evaluated here, so fit@call records
+  # `model = riclpmModel, data = data` rather than a copy of the data.
+  fit <- do.call(fitfunc, c(list(model = quote(riclpmModel), data = quote(data)),
                             .riclpm_lavaan_opts,
-                            list(...)))
+                            list(...)),
+                 envir = environment())
   return(fit)
 }
 
