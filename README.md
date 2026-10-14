@@ -6,7 +6,7 @@ For documentation, such as it is, see [here](https://johnflournoy.science/riclpm
 
 See [this tutorial](https://johnflournoy.science/riclpm-lavaan-demo.html) for more information about the models.
 
-For a simulation that uses riclpmr to compare the RI-CLPM with the lagged multilevel models often used in its place, see [False positives in lagged multilevel models](https://johnflournoy.science/lagged_mlm/).
+For a simulation that uses riclpmr to compare the RI-CLPM with the lagged multilevel models often used in its place, see [False positives in multilevel models for longitudinal data](https://johnflournoy.science/lagged_mlm/).
 
 ## Why the random intercept
 
