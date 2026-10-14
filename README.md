@@ -6,6 +6,8 @@ For documentation, such as it is, see [here](https://johnflournoy.science/riclpm
 
 See [this tutorial](https://johnflournoy.science/riclpm-lavaan-demo.html) for more information about the models.
 
+For a simulation that uses riclpmr to compare the RI-CLPM with the lagged multilevel models often used in its place, see [False positives in lagged multilevel models](https://johnflournoy.science/lagged_mlm/).
+
 ## Why the random intercept
 
 The traditional cross-lagged panel model regresses each variable on every variable at the previous wave. When people differ in stable, trait-like ways, those stable differences load onto the autoregressive and cross-lagged paths, so a "lagged effect" of x on y can just be the fact that people who are generally high on x are also generally high on y (Hamaker et al., 2015). The RI-CLPM gives each construct a random intercept that absorbs those stable between-person differences, and puts the autoregressive and cross-lagged paths on the within-person deviations from them. The lagged paths then describe how a person's departure from their own usual level on one variable predicts their departure on another at the next wave.
