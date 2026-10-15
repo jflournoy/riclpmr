@@ -15,7 +15,7 @@
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
+<![endif]--><script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">riclpmr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.0.9001</span>
       </span>
     </div>
 
@@ -61,7 +61,7 @@
       <h1 data-toc-skip>A very brief introduction to the
 <code>riclpmr</code> package</h1>
             
-            <h4 data-toc-skip class="date">2026-10-12</h4>
+            <h4 data-toc-skip class="date">2026-10-15</h4>
       
 
       <div class="hidden name"><code>riclpmr.Rmd</code></div>
@@ -74,7 +74,7 @@
 <p>To install the package:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#install.packages(devtools)</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/install-deprecated.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">'jflournoy/riclpmr'</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">'jflournoy/riclpmr'</span><span class="op">)</span></span></code></pre></div>
 <p>Generate a new model:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">riclpmr</span><span class="op">)</span></span>
@@ -135,11 +135,12 @@
 <code class="sourceCode R"><span><span class="co">#We could edit the model code to set specific regresion coefficients. lavaan</span></span>
 <span><span class="co">#will automatically set them to 0.</span></span>
 <span><span class="va">fake_data</span> <span class="op">&lt;-</span> <span class="fu">riclpmr</span><span class="fu">::</span><span class="fu"><a href="../reference/simriclpm.html">simriclpm</a></span><span class="op">(</span>riclpmModel <span class="op">=</span> <span class="va">model_text</span>, sample.nobs <span class="op">=</span> <span class="fl">500</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: lavaan-&gt;lav_data_simulate_sl():  </span></span>
-<span><span class="co">#&gt;    some regression coefficients are unspecified and will be set to zero</span></span>
+<span><span class="co">#&gt; Warning in (function (model = NULL, model.type = "sem", meanstructure = FALSE,</span></span>
+<span><span class="co">#&gt; : lavaan WARNING: some regression coefficients are unspecified and will be set</span></span>
+<span><span class="co">#&gt; to zero</span></span>
 <span><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu">riclpmr</span><span class="fu">::</span><span class="fu"><a href="../reference/lavriclpm.html">lavriclpm</a></span><span class="op">(</span>riclpmModel <span class="op">=</span> <span class="va">model_text</span>, data <span class="op">=</span> <span class="va">fake_data</span><span class="op">)</span></span>
 <span><span class="fu">lavaan</span><span class="fu">::</span><span class="fu">summary</span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span>
-<span><span class="co">#&gt; lavaan 0.7-3 ended normally after 51 iterations</span></span>
+<span><span class="co">#&gt; lavaan 0.6.17 ended normally after 41 iterations</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;   Estimator                                         ML</span></span>
 <span><span class="co">#&gt;   Optimization method                           NLMINB</span></span>
@@ -150,14 +151,9 @@
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Model Test User Model:</span></span>
 <span><span class="co">#&gt;                                                       </span></span>
-<span><span class="co">#&gt;   Test statistic                                11.234</span></span>
+<span><span class="co">#&gt;   Test statistic                                35.236</span></span>
 <span><span class="co">#&gt;   Degrees of freedom                                18</span></span>
-<span><span class="co">#&gt;   P-value (Chi-square)                           0.884</span></span>
-<span><span class="co">#&gt;                                                       </span></span>
-<span><span class="co">#&gt;   Browne's residual (NT model-based) test             </span></span>
-<span><span class="co">#&gt;   Test statistic                                11.179</span></span>
-<span><span class="co">#&gt;   Degrees of freedom                                18</span></span>
-<span><span class="co">#&gt;   P-value (Chi-square)                           0.887</span></span>
+<span><span class="co">#&gt;   P-value (Chi-square)                           0.009</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Parameter Estimates:</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -201,79 +197,79 @@
 <span><span class="co">#&gt; Regressions:</span></span>
 <span><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
 <span><span class="co">#&gt;   lat_x2 ~                                            </span></span>
-<span><span class="co">#&gt;     lat_x1   (x_x)   -0.052    0.061   -0.855    0.392</span></span>
-<span><span class="co">#&gt;     lat_y1   (x_y)    0.075    0.052    1.457    0.145</span></span>
-<span><span class="co">#&gt;     lat_z1   (x_z)    0.029    0.051    0.570    0.569</span></span>
+<span><span class="co">#&gt;     lat_x1   (x_x)    0.034    0.069    0.488    0.626</span></span>
+<span><span class="co">#&gt;     lat_y1   (x_y)    0.001    0.057    0.024    0.981</span></span>
+<span><span class="co">#&gt;     lat_z1   (x_z)   -0.007    0.057   -0.120    0.905</span></span>
 <span><span class="co">#&gt;   lat_x3 ~                                            </span></span>
-<span><span class="co">#&gt;     lat_x2   (x_x)   -0.052    0.061   -0.855    0.392</span></span>
-<span><span class="co">#&gt;     lat_y2   (x_y)    0.075    0.052    1.457    0.145</span></span>
-<span><span class="co">#&gt;     lat_z2   (x_z)    0.029    0.051    0.570    0.569</span></span>
+<span><span class="co">#&gt;     lat_x2   (x_x)    0.034    0.069    0.488    0.626</span></span>
+<span><span class="co">#&gt;     lat_y2   (x_y)    0.001    0.057    0.024    0.981</span></span>
+<span><span class="co">#&gt;     lat_z2   (x_z)   -0.007    0.057   -0.120    0.905</span></span>
 <span><span class="co">#&gt;   lat_y2 ~                                            </span></span>
-<span><span class="co">#&gt;     lat_x1   (y_x)    0.102    0.056    1.816    0.069</span></span>
-<span><span class="co">#&gt;     lat_y1   (y_y)    0.116    0.069    1.673    0.094</span></span>
-<span><span class="co">#&gt;     lat_z1   (y_z)    0.007    0.057    0.124    0.901</span></span>
+<span><span class="co">#&gt;     lat_x1   (y_x)    0.020    0.052    0.381    0.703</span></span>
+<span><span class="co">#&gt;     lat_y1   (y_y)    0.007    0.066    0.102    0.919</span></span>
+<span><span class="co">#&gt;     lat_z1   (y_z)   -0.020    0.054   -0.378    0.706</span></span>
 <span><span class="co">#&gt;   lat_y3 ~                                            </span></span>
-<span><span class="co">#&gt;     lat_x2   (y_x)    0.102    0.056    1.816    0.069</span></span>
-<span><span class="co">#&gt;     lat_y2   (y_y)    0.116    0.069    1.673    0.094</span></span>
-<span><span class="co">#&gt;     lat_z2   (y_z)    0.007    0.057    0.124    0.901</span></span>
+<span><span class="co">#&gt;     lat_x2   (y_x)    0.020    0.052    0.381    0.703</span></span>
+<span><span class="co">#&gt;     lat_y2   (y_y)    0.007    0.066    0.102    0.919</span></span>
+<span><span class="co">#&gt;     lat_z2   (y_z)   -0.020    0.054   -0.378    0.706</span></span>
 <span><span class="co">#&gt;   lat_z2 ~                                            </span></span>
-<span><span class="co">#&gt;     lat_x1   (z_x)   -0.006    0.052   -0.118    0.906</span></span>
-<span><span class="co">#&gt;     lat_y1   (z_y)    0.003    0.053    0.055    0.956</span></span>
-<span><span class="co">#&gt;     lat_z1   (z_z)   -0.066    0.066   -1.004    0.315</span></span>
+<span><span class="co">#&gt;     lat_x1   (z_x)    0.051    0.053    0.973    0.330</span></span>
+<span><span class="co">#&gt;     lat_y1   (z_y)    0.025    0.054    0.453    0.650</span></span>
+<span><span class="co">#&gt;     lat_z1   (z_z)    0.035    0.068    0.515    0.607</span></span>
 <span><span class="co">#&gt;   lat_z3 ~                                            </span></span>
-<span><span class="co">#&gt;     lat_x2   (z_x)   -0.006    0.052   -0.118    0.906</span></span>
-<span><span class="co">#&gt;     lat_y2   (z_y)    0.003    0.053    0.055    0.956</span></span>
-<span><span class="co">#&gt;     lat_z2   (z_z)   -0.066    0.066   -1.004    0.315</span></span>
+<span><span class="co">#&gt;     lat_x2   (z_x)    0.051    0.053    0.973    0.330</span></span>
+<span><span class="co">#&gt;     lat_y2   (z_y)    0.025    0.054    0.453    0.650</span></span>
+<span><span class="co">#&gt;     lat_z2   (z_z)    0.035    0.068    0.515    0.607</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Covariances:</span></span>
 <span><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
 <span><span class="co">#&gt;   ri_x ~~                                             </span></span>
-<span><span class="co">#&gt;     ri_y              0.021    0.069    0.305    0.760</span></span>
-<span><span class="co">#&gt;     ri_z             -0.061    0.068   -0.901    0.367</span></span>
+<span><span class="co">#&gt;     ri_y              0.061    0.066    0.931    0.352</span></span>
+<span><span class="co">#&gt;     ri_z              0.015    0.070    0.210    0.833</span></span>
 <span><span class="co">#&gt;   ri_y ~~                                             </span></span>
-<span><span class="co">#&gt;     ri_z             -0.056    0.066   -0.843    0.399</span></span>
+<span><span class="co">#&gt;     ri_z              0.017    0.065    0.264    0.792</span></span>
 <span><span class="co">#&gt;   lat_x1 ~~                                           </span></span>
-<span><span class="co">#&gt;     lat_y1            0.089    0.065    1.371    0.170</span></span>
-<span><span class="co">#&gt;     lat_z1            0.160    0.058    2.759    0.006</span></span>
+<span><span class="co">#&gt;     lat_y1            0.010    0.061    0.158    0.874</span></span>
+<span><span class="co">#&gt;     lat_z1            0.040    0.063    0.631    0.528</span></span>
 <span><span class="co">#&gt;  .lat_x2 ~~                                           </span></span>
-<span><span class="co">#&gt;    .lat_y2  (r_xy)    0.034    0.055    0.618    0.537</span></span>
-<span><span class="co">#&gt;    .lat_z2  (r_xz)    0.035    0.052    0.687    0.492</span></span>
+<span><span class="co">#&gt;    .lat_y2  (r_xy)    0.049    0.057    0.857    0.391</span></span>
+<span><span class="co">#&gt;    .lat_z2  (r_xz)   -0.039    0.058   -0.677    0.498</span></span>
 <span><span class="co">#&gt;  .lat_x3 ~~                                           </span></span>
-<span><span class="co">#&gt;    .lat_y3  (r_xy)    0.034    0.055    0.618    0.537</span></span>
-<span><span class="co">#&gt;    .lat_z3  (r_xz)    0.035    0.052    0.687    0.492</span></span>
+<span><span class="co">#&gt;    .lat_y3  (r_xy)    0.049    0.057    0.857    0.391</span></span>
+<span><span class="co">#&gt;    .lat_z3  (r_xz)   -0.039    0.058   -0.677    0.498</span></span>
 <span><span class="co">#&gt;   lat_y1 ~~                                           </span></span>
-<span><span class="co">#&gt;     lat_z1            0.103    0.060    1.721    0.085</span></span>
+<span><span class="co">#&gt;     lat_z1           -0.039    0.060   -0.642    0.521</span></span>
 <span><span class="co">#&gt;  .lat_y2 ~~                                           </span></span>
-<span><span class="co">#&gt;    .lat_z2  (r_yz)    0.020    0.057    0.350    0.727</span></span>
+<span><span class="co">#&gt;    .lat_z2  (r_yz)   -0.008    0.055   -0.154    0.878</span></span>
 <span><span class="co">#&gt;  .lat_y3 ~~                                           </span></span>
-<span><span class="co">#&gt;    .lat_z3  (r_yz)    0.020    0.057    0.350    0.727</span></span>
+<span><span class="co">#&gt;    .lat_z3  (r_yz)   -0.008    0.055   -0.154    0.878</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Intercepts:</span></span>
 <span><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
-<span><span class="co">#&gt;    .x_t1    (x_1_)    0.016    0.066    0.251    0.802</span></span>
-<span><span class="co">#&gt;    .x_t2    (x_2_)   -0.042    0.063   -0.664    0.507</span></span>
-<span><span class="co">#&gt;    .x_t3    (x_3_)   -0.077    0.063   -1.218    0.223</span></span>
-<span><span class="co">#&gt;    .y_t1    (y_1_)    0.062    0.059    1.043    0.297</span></span>
-<span><span class="co">#&gt;    .y_t2    (y_2_)    0.047    0.062    0.757    0.449</span></span>
-<span><span class="co">#&gt;    .y_t3    (y_3_)    0.099    0.062    1.600    0.110</span></span>
-<span><span class="co">#&gt;    .z_t1    (z_1_)   -0.064    0.062   -1.025    0.305</span></span>
-<span><span class="co">#&gt;    .z_t2    (z_2_)   -0.048    0.064   -0.756    0.449</span></span>
-<span><span class="co">#&gt;    .z_t3    (z_3_)    0.025    0.064    0.391    0.696</span></span>
+<span><span class="co">#&gt;    .x_t1    (x_1_)    0.061    0.063    0.970    0.332</span></span>
+<span><span class="co">#&gt;    .x_t2    (x_2_)   -0.014    0.065   -0.218    0.828</span></span>
+<span><span class="co">#&gt;    .x_t3    (x_3_)    0.003    0.065    0.049    0.961</span></span>
+<span><span class="co">#&gt;    .y_t1    (y_1_)   -0.067    0.059   -1.125    0.261</span></span>
+<span><span class="co">#&gt;    .y_t2    (y_2_)   -0.032    0.060   -0.523    0.601</span></span>
+<span><span class="co">#&gt;    .y_t3    (y_3_)    0.063    0.060    1.038    0.299</span></span>
+<span><span class="co">#&gt;    .z_t1    (z_1_)    0.066    0.063    1.062    0.288</span></span>
+<span><span class="co">#&gt;    .z_t2    (z_2_)    0.048    0.063    0.770    0.441</span></span>
+<span><span class="co">#&gt;    .z_t3    (z_3_)    0.064    0.063    1.020    0.308</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Variances:</span></span>
 <span><span class="co">#&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)</span></span>
-<span><span class="co">#&gt;     ri_x              1.122    0.098   11.503    0.000</span></span>
-<span><span class="co">#&gt;     ri_y              0.781    0.097    8.016    0.000</span></span>
-<span><span class="co">#&gt;     ri_z              1.081    0.094   11.555    0.000</span></span>
-<span><span class="co">#&gt;     lat_x1            1.029    0.087   11.765    0.000</span></span>
-<span><span class="co">#&gt;    .lat_x2   (e_x)    0.859    0.069   12.410    0.000</span></span>
-<span><span class="co">#&gt;    .lat_x3   (e_x)    0.859    0.069   12.410    0.000</span></span>
-<span><span class="co">#&gt;     lat_y1            0.988    0.096   10.279    0.000</span></span>
-<span><span class="co">#&gt;    .lat_y2   (e_y)    1.122    0.082   13.606    0.000</span></span>
-<span><span class="co">#&gt;    .lat_y3   (e_y)    1.122    0.082   13.606    0.000</span></span>
-<span><span class="co">#&gt;     lat_z1            0.851    0.075   11.283    0.000</span></span>
-<span><span class="co">#&gt;    .lat_z2   (e_z)    0.954    0.076   12.499    0.000</span></span>
-<span><span class="co">#&gt;    .lat_z3   (e_z)    0.954    0.076   12.499    0.000</span></span>
+<span><span class="co">#&gt;     ri_x              0.994    0.100    9.927    0.000</span></span>
+<span><span class="co">#&gt;     ri_y              0.841    0.086    9.787    0.000</span></span>
+<span><span class="co">#&gt;     ri_z              0.988    0.097   10.167    0.000</span></span>
+<span><span class="co">#&gt;     lat_x1            0.978    0.090   10.852    0.000</span></span>
+<span><span class="co">#&gt;    .lat_x2   (e_x)    1.103    0.086   12.823    0.000</span></span>
+<span><span class="co">#&gt;    .lat_x3   (e_x)    1.103    0.086   12.823    0.000</span></span>
+<span><span class="co">#&gt;     lat_y1            0.926    0.082   11.236    0.000</span></span>
+<span><span class="co">#&gt;    .lat_y2   (e_y)    0.976    0.076   12.802    0.000</span></span>
+<span><span class="co">#&gt;    .lat_y3   (e_y)    0.976    0.076   12.802    0.000</span></span>
+<span><span class="co">#&gt;     lat_z1            0.965    0.088   11.020    0.000</span></span>
+<span><span class="co">#&gt;    .lat_z2   (e_z)    0.987    0.079   12.557    0.000</span></span>
+<span><span class="co">#&gt;    .lat_z3   (e_z)    0.987    0.079   12.557    0.000</span></span>
 <span><span class="co">#&gt;    .x_t1              0.000                           </span></span>
 <span><span class="co">#&gt;    .x_t2              0.000                           </span></span>
 <span><span class="co">#&gt;    .x_t3              0.000                           </span></span>
@@ -300,7 +296,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
       </footer>

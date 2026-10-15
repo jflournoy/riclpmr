@@ -1,3 +1,6 @@
 template:
   params:
     bootswatch: flatly
+  includes:
+    in_header: |
+      <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
